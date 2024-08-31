@@ -47,7 +47,7 @@ startup {
   settings.Add("dead_sea", true, "Dead Sea");
   settings.Add("defeat_radius", true, "Defeat Radius", "dead_sea");
   settings.Add("defeat_sage", true, "Defeat Sage", "dead_sea");
-  settings.Add("defeat_white_knight", false, "Defeat White Knight", "dead_sea");
+  settings.Add("defeat_wight_knight", false, "Defeat Wight Knight", "dead_sea");
   settings.Add("defeat_garai", true, "Defeat Garai", "dead_sea");
   settings.Add("defeat_highwayman", true, "Defeat Highwayman", "dead_sea");
   settings.Add("defeat_miguel", true, "Defeat Miguel", "dead_sea");
@@ -181,7 +181,7 @@ init {
 
     {"defeat_radius", new Tuple<int, string>(434, "2")},
     {"defeat_sage", new Tuple<int, string>(447, "2")},
-    {"defeat_white_knight", new Tuple<int, string>(475, "2")},
+    {"defeat_wight_knight", new Tuple<int, string>(475, "2")},
     {"defeat_garai", new Tuple<int, string>(438, "2")},
     {"defeat_highwayman", new Tuple<int, string>(439, "2")},
     {"defeat_miguel", new Tuple<int, string>(440, "2")},
