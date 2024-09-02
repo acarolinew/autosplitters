@@ -146,7 +146,7 @@ init {
       enemiesDefeated.Add(current.enemy4MaxHP > 0 && current.enemy4HP <= 0);
     }
     
-    if (settings[splitName] && current.groupID == groupInfo.Item1 && !enemiesDefeated.Any(d => d == false)) {
+    if (!enemiesDefeated.Any(d => d == false)) {
       print("HACER SPLIT : " + splitName);
       vars.doSplit = 1;
       return true;
@@ -259,14 +259,16 @@ split {
 
   if (vars.doSplit == 0) {
     foreach(var split in vars.fights) {
-      vars.checkEnemyDefeated(split.Key, split.Value);
+      if (settings[split.Key] && current.groupID == split.Value.Item1) {
+        vars.checkEnemyDefeated(split.Key, split.Value);
+      }      
     }
   }
 
   if (settings["all_characters_recruits"]) {
     foreach(var split in vars.recruits) {
-      if (settings[split.Key]) {
-        if (current.fieldID == split.Value && old.confirmar != "" && current.confirmar == "") {
+      if (settings[split.Key] && current.fieldID == split.Value) {
+        if (old.confirmar != "" && current.confirmar == "") {
           return true;
         }
       }
@@ -274,7 +276,7 @@ split {
   }
 
   if (settings["all_characters_fights"]) {
-    if (current.groupID == 472 && current.enemy2MaxHP > 0 && current.enemy2MaxHP != 30000 && current.enemy2HP <= 0 && vars.devourerFlag == 0) {
+    if (vars.devourerFlag == 0 && current.groupID == 472 && current.enemy2MaxHP > 0 && current.enemy2MaxHP != 30000 && current.enemy2HP <= 0) {
       vars.devourerFlag = 1;
       vars.devourerIndex = vars.devourerIndex + 1;
       
@@ -289,7 +291,7 @@ split {
   }
 
   if (settings["use_chrono_cross"]) {
-    if (current.groupID == 472 && old.enemy2HP == 30000 && current.enemy2HP == 0 && current.enemy2MaxHP == 30000 && vars.devourerFlag == 0) {
+    if (vars.devourerFlag == 0 && current.groupID == 472 && old.enemy2HP == 30000 && current.enemy2HP == 0 && current.enemy2MaxHP == 30000) {
       print("CHRONO CROSS! - GG!");
       return true;
     }
