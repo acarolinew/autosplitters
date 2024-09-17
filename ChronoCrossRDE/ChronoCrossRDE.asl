@@ -219,7 +219,7 @@ init {
   };
 
   vars.recruits = new Dictionary<string, int>() {
-    {"recruit_mojo", 389},
+    {"recruit_mojo", 44},
     {"recruit_pip", 268},
     {"recruit_doc", 225},
     {"recruit_zappa", 93},
